@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Business Direct Linker</title>
+    <title>WhatsApp Business Launcher</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; text-align: center; background-color: #075e54; color: #fff; }
         .card { background: white; color: #333; padding: 25px; border-radius: 12px; max-width: 400px; margin: 30px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
@@ -17,27 +17,23 @@
 <body>
 
     <div class="card">
-        <h3>WhatsApp Business Linked Devices</h3>
-        <p>আপনার নম্বর দিয়ে বোতামে চাপ দিন:</p>
+        <h3>WhatsApp Business-এ যান</h3>
+        <p>নম্বর দিয়ে বোতামে চাপ দিন:</p>
         
         <input type="number" id="phone" placeholder="8801700000000">
-
-        <button onclick="openWABusiness()">WhatsApp Business-এ যান</button>
+        <button onclick="openWABusiness()">WhatsApp Business খুলুন</button>
     </div>
 
     <script>
         function openWABusiness() {
             let number = document.getElementById("phone").value.trim();
             if (number === "") {
-                alert("দয়া করে কান্ট্রি কোড সহ সঠিক নম্বর দিন!");
+                alert("দয়া করে সঠিক নম্বরটি দিন!");
                 return;
             }
 
-            // শুধুমাত্র WhatsApp Business অ্যাপ খোলার নির্দিষ্ট ইনটেন্ট (Intent) লিঙ্ক
-            let businessIntent = "intent://settings/linked_devices#Intent;scheme=whatsapp;package=com.whatsapp.w4b;end";
-
-            // সরাসরি WhatsApp Business অ্যাপের Linked Devices পেজে রিডাইরেক্ট করবে
-            window.location.href = businessIntent;
+            // WhatsApp Business অ্যাপ ওপেন করার স্ট্যান্ডার্ড স্কিম
+            window.location.href = "https://wa.me/" + number;
         }
     </script>
 
