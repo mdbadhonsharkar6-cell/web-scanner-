@@ -3,40 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Scanner & Direct Chat</title>
+    <title>Quick WhatsApp Web Launcher</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 15px; text-align: center; background-color: #f4f4f9; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        input { width: 80%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
-        button { background-color: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer; }
-        iframe { width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 10px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; background-color: #e5ddd5; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); max-width: 450px; margin: auto; }
+        h2 { color: #075e54; margin-bottom: 10px; }
+        p { color: #555; font-size: 14px; }
+        input { width: 100%; padding: 14px; margin: 15px 0; border: 2px solid #25D366; border-radius: 8px; font-size: 16px; box-sizing: border-box; outline: none; }
+        .btn-web { background-color: #075e54; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-chat { background-color: #25D366; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        .btn-web:hover { background-color: #054c44; }
+        .btn-chat:hover { background-color: #1ebd56; }
     </style>
 </head>
 <body>
 
-    <!-- ১. নম্বর দিয়ে সরাসরি চ্যাট করার অপশন -->
-    <div class="card">
-        <h3>নম্বর দিয়ে সরাসরি চ্যাট করুন</h3>
-        <input type="text" id="phone" placeholder="কান্ট্রি কোড সহ নম্বর (যেমন: 8801700000000)">
-        <br>
-        <button onclick="openWhatsApp()">মেসেজ পাঠান</button>
-    </div>
-
-    <!-- ২. QR স্ক্যান বা Web WhatsApp লোড অপশন -->
-    <div class="card">
-        <h3>WhatsApp Web / QR Scanner</h3>
-        <iframe src="https://web.whatsapp.com/"></iframe>
+    <div class="container">
+        <h2>WhatsApp Quick Web Launcher</h2>
+        <p>সহজেই যেকোনো নম্বরের মাধ্যমে WhatsApp Web লিঙ্কে যুক্ত হন</p>
+        
+        <input type="number" id="phone" placeholder="কান্ট্রি কোড সহ নম্বর (যেমন: 8801700000000)">
+        
+        <button class="btn-web" onclick="openWhatsAppWeb()">WhatsApp Web লিঙ্ক চালু করুন</button>
+        <button class="btn-chat" onclick="openDirectChat()">সরাসরি চ্যাট লিঙ্কে যান</button>
     </div>
 
     <script>
-        function openWhatsApp() {
-            let number = document.getElementById("phone").value;
+        function openWhatsAppWeb() {
+            let number = document.getElementById("phone").value.trim();
             if (number === "") {
                 alert("দয়া করে একটি সঠিক নম্বর দিন!");
-            } else {
-                let url = "https://wa.me/" + number;
-                window.open(url, '_blank');
+                return;
             }
+            // WhatsApp Web-এর সেশন কানেক্ট লিংক
+            let webUrl = "https://web.whatsapp.com/send?phone=" + number;
+            window.open(webUrl, '_blank');
+        }
+
+        function openDirectChat() {
+            let number = document.getElementById("phone").value.trim();
+            if (number === "") {
+                alert("দয়া করে একটি সঠিক নম্বর দিন!");
+                return;
+            }
+            // সরাসরি চ্যাট লিংক
+            let chatUrl = "https://api.whatsapp.com/send?phone=" + number;
+            window.open(chatUrl, '_blank');
         }
     </script>
 
