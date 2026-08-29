@@ -3,52 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick WhatsApp Web Launcher</title>
+    <title>WhatsApp Web - Link with Phone</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; text-align: center; background-color: #e5ddd5; }
-        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); max-width: 450px; margin: auto; }
-        h2 { color: #075e54; margin-bottom: 10px; }
-        p { color: #555; font-size: 14px; }
-        input { width: 100%; padding: 14px; margin: 15px 0; border: 2px solid #25D366; border-radius: 8px; font-size: 16px; box-sizing: border-box; outline: none; }
-        .btn-web { background-color: #075e54; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
-        .btn-chat { background-color: #25D366; color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
-        .btn-web:hover { background-color: #054c44; }
-        .btn-chat:hover { background-color: #1ebd56; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; text-align: center; background-color: #075e54; color: #fff; }
+        .card { background: white; color: #333; padding: 25px; border-radius: 12px; max-width: 400px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        h3 { color: #075e54; margin-top: 0; }
+        p { font-size: 14px; color: #555; line-height: 1.5; }
+        input { width: 90%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
+        button { background-color: #25D366; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 90%; }
+        button:hover { background-color: #1ebd56; }
+        .info-box { background: #e8f5e9; color: #2e7d32; padding: 12px; border-radius: 8px; font-size: 13px; margin-top: 15px; text-align: left; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>WhatsApp Quick Web Launcher</h2>
-        <p>সহজেই যেকোনো নম্বরের মাধ্যমে WhatsApp Web লিঙ্কে যুক্ত হন</p>
+    <div class="card">
+        <h3>WhatsApp Web-এ কানেক্ট করুন</h3>
+        <p>আপনার নম্বর লিখে বোতামে চাপ দিন। এরপর ব্রাউজারে একটি <b>৮ অক্ষরের কোড</b> আসবে।</p>
         
         <input type="number" id="phone" placeholder="কান্ট্রি কোড সহ নম্বর (যেমন: 8801700000000)">
-        
-        <button class="btn-web" onclick="openWhatsAppWeb()">WhatsApp Web লিঙ্ক চালু করুন</button>
-        <button class="btn-chat" onclick="openDirectChat()">সরাসরি চ্যাট লিঙ্কে যান</button>
+        <button onclick="linkWithPhone()">কোড জেনারেট করুন</button>
+
+        <div class="info-box">
+            <b>পরবর্তী ধাপ:</b><br>
+            ১. লিঙ্ক খুললে ব্রাউজারের <b>Desktop site</b> অন করবেন।<br>
+            ২. ব্রাউজারে ৮ ডিজিটের কোড দেখা যাবে।<br>
+            ৩. সেই কোডটি আপনার মোবাইলের WhatsApp-এর <b>Link a device</b> অপশনে বসিয়ে দিন।
+        </div>
     </div>
 
     <script>
-        function openWhatsAppWeb() {
+        function linkWithPhone() {
             let number = document.getElementById("phone").value.trim();
             if (number === "") {
                 alert("দয়া করে একটি সঠিক নম্বর দিন!");
                 return;
             }
-            // WhatsApp Web-এর সেশন কানেক্ট লিংক
-            let webUrl = "https://web.whatsapp.com/send?phone=" + number;
-            window.open(webUrl, '_blank');
-        }
-
-        function openDirectChat() {
-            let number = document.getElementById("phone").value.trim();
-            if (number === "") {
-                alert("দয়া করে একটি সঠিক নম্বর দিন!");
-                return;
-            }
-            // সরাসরি চ্যাট লিংক
-            let chatUrl = "https://api.whatsapp.com/send?phone=" + number;
-            window.open(chatUrl, '_blank');
+            // WhatsApp Web Phone Linking Link
+            let url = "https://web.whatsapp.com/1/" + number;
+            window.location.href = url;
         }
     </script>
 
