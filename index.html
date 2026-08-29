@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scanner & Direct Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 15px; text-align: center; background-color: #f4f4f9; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input { width: 80%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        button { background-color: #25D366; color: white; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        iframe { width: 100%; height: 500px; border: 1px solid #ddd; border-radius: 10px; }
+    </style>
+</head>
+<body>
 
+    <!-- ১. নম্বর দিয়ে সরাসরি চ্যাট করার অপশন -->
+    <div class="card">
+        <h3>নম্বর দিয়ে সরাসরি চ্যাট করুন</h3>
+        <input type="text" id="phone" placeholder="কান্ট্রি কোড সহ নম্বর (যেমন: 8801700000000)">
+        <br>
+        <button onclick="openWhatsApp()">মেসেজ পাঠান</button>
+    </div>
+
+    <!-- ২. QR স্ক্যান বা Web WhatsApp লোড অপশন -->
+    <div class="card">
+        <h3>WhatsApp Web / QR Scanner</h3>
+        <iframe src="https://web.whatsapp.com/"></iframe>
+    </div>
+
+    <script>
+        function openWhatsApp() {
+            let number = document.getElementById("phone").value;
+            if (number === "") {
+                alert("দয়া করে একটি সঠিক নম্বর দিন!");
+            } else {
+                let url = "https://wa.me/" + number;
+                window.open(url, '_blank');
+            }
+        }
+    </script>
+
+</body>
+</html>
