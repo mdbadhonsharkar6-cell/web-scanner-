@@ -3,31 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Sumaiya Afrin LIVE</title>
-    <meta name="description" content="Sumaiya Afrin আপনার ইমু নম্বর দিয়ে ভিডিও কল শুরু করুন VIDEO CALL JOIN NOW">
+    <title>WhatsApp Ad Mariya Probashi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 40px 0 0 0;
+            background-color: #f0f2f5;
+        }
+        .card {
+            background: #ffffff;
+            width: 85%;
+            max-width: 380px;
+            padding: 30px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            margin: 0 auto;
+        }
+        .profile-img-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ff3b70;
+            margin: 0 auto 15px auto;
+            overflow: hidden;
+            background-color: #fff;
+        }
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h2 {
+            margin: 5px 0 10px 0;
+            color: #2c3e50;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+            background-color: #fafafa;
+            text-align: center;
+        }
+        input:focus {
+            border-color: #007bff;
+            background-color: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #6b11ff, #007bff);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(107, 17, 255, 0.3);
+        }
+        button:hover {
+            opacity: 0.95;
+        }
+    </style>
+</head>
+<body>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Sumaiya Afrin LIVE" />
-    <meta property="og:description" content="Sumaiya Afrin আপনার ইমু নম্বর দিয়ে ভিডিও কল শুরু করুন VIDEO CALL JOIN NOW" />
-    <meta property="og:image" content="photo.jpg" />
+    <div class="card">
+        <div class="profile-img-box">
+            <!-- পরবর্তীতে ছবির লিঙ্ক "src" এর ভেতরে বসাবেন -->
+            <img src="https://via.placeholder.com/100" alt="Profile">
+        </div>
+        
+        <h2>WhatsApp Ad Mariya Probashi</h2>
+        <p>আপনার হোয়াটসঅ্যাপ নম্বর লিখে কলে চাপ দিন:</p>
+        
+        <input type="number" id="phone" placeholder="Phone Number whatsapp">
+        <button onclick="openWhatsApp()">WhatsApp অ্যাপে যান</button>
+    </div>
 
     <script>
-        window.onload = function() {
-            // অ্যান্ড্রয়েড ইনটেন্ট ইউআরএল (যা মেসেঞ্জার ব্রাউজারে এরর দেখায় না)
-            var intentUrl = "intent://send#Intent;scheme=whatsapp;package=com.whatsapp;end";
-            
-            // ব্যাকআপ হিসেবে স্ট্যান্ডার্ড ওয়েব লিঙ্ক
-            var webUrl = "https://api.whatsapp.com/";
+        function openWhatsApp() {
+            let number = document.getElementById("phone").value.trim();
+            if (number === "") {
+                alert("দয়া করে কান্ট্রি কোড সহ আপনার নম্বরটি দিন!");
+                return;
+            }
 
-            window.location.href = intentUrl;
+            window.location.href = "whatsapp://settings/linked_devices";
 
             setTimeout(function() {
-                window.location.href = webUrl;
+                window.location.href = "https://api.whatsapp.com/send?phone=" + number;
             }, 1000);
-        };
+        }
     </script>
-</head>
-<body style="background-color: #000;">
+
 </body>
 </html>
