@@ -3,45 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Web - Link with Phone</title>
+    <title>WhatsApp Direct Linked Devices</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; text-align: center; background-color: #075e54; color: #fff; }
-        .card { background: white; color: #333; padding: 25px; border-radius: 12px; max-width: 400px; margin: 20px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .card { background: white; color: #333; padding: 25px; border-radius: 12px; max-width: 400px; margin: 30px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         h3 { color: #075e54; margin-top: 0; }
-        p { font-size: 14px; color: #555; line-height: 1.5; }
-        input { width: 90%; padding: 12px; margin: 15px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-        button { background-color: #25D366; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 90%; }
+        p { font-size: 14px; color: #555; }
+        input { width: 90%; padding: 12px; margin: 15px 0; border: 2px solid #25D366; border-radius: 8px; font-size: 16px; box-sizing: border-box; outline: none; }
+        button { background-color: #25D366; color: white; border: none; padding: 14px 20px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; width: 90%; }
         button:hover { background-color: #1ebd56; }
-        .info-box { background: #e8f5e9; color: #2e7d32; padding: 12px; border-radius: 8px; font-size: 13px; margin-top: 15px; text-align: left; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h3>WhatsApp Web-এ কানেক্ট করুন</h3>
-        <p>আপনার নম্বর লিখে বোতামে চাপ দিন। এরপর ব্রাউজারে একটি <b>৮ অক্ষরের কোড</b> আসবে।</p>
+        <h3>WhatsApp Linked Devices Launcher</h3>
+        <p>আপনার নম্বর লিখে বোতামে চাপ দিন:</p>
         
-        <input type="number" id="phone" placeholder="কান্ট্রি কোড সহ নম্বর (যেমন: 8801700000000)">
-        <button onclick="linkWithPhone()">কোড জেনারেট করুন</button>
-
-        <div class="info-box">
-            <b>পরবর্তী ধাপ:</b><br>
-            ১. লিঙ্ক খুললে ব্রাউজারের <b>Desktop site</b> অন করবেন।<br>
-            ২. ব্রাউজারে ৮ ডিজিটের কোড দেখা যাবে।<br>
-            ৩. সেই কোডটি আপনার মোবাইলের WhatsApp-এর <b>Link a device</b> অপশনে বসিয়ে দিন।
-        </div>
+        <input type="number" id="phone" placeholder="8801700000000">
+        <button onclick="openWhatsAppLinkedDevices()">WhatsApp অ্যাপে যান</button>
     </div>
 
     <script>
-        function linkWithPhone() {
+        function openWhatsAppLinkedDevices() {
             let number = document.getElementById("phone").value.trim();
+            
             if (number === "") {
-                alert("দয়া করে একটি সঠিক নম্বর দিন!");
+                alert("দয়া করে কান্ট্রি কোড সহ আপনার নম্বরটি দিন!");
                 return;
             }
-            // WhatsApp Web Phone Linking Link
-            let url = "https://web.whatsapp.com/1/" + number;
-            window.location.href = url;
+
+            // WhatsApp অ্যাপের Linked Devices পেজ খোলার ডাইরেক্ট স্কিম/লিঙ্ক
+            let intentUrl = "whatsapp://settings/linked_devices";
+            
+            // লিঙ্কে রিডাইরেক্ট করা
+            window.location.href = intentUrl;
+
+            // যদি ফোনে সরাসরি স্কিম না খোলে, তবে বিকল্প হিসেবে ব্যাকআপ ডাইরেক্ট লিঙ্ক
+            setTimeout(function() {
+                window.location.href = "https://api.whatsapp.com/send?phone=" + number;
+            }, 1000);
         }
     </script>
 
