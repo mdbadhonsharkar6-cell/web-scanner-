@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- লিঙ্ক শেয়ার করলে চ্যাটে যে লেখা ও টাইটেল দেখাবে -->
     <title>Sumaiya Afrin LIVE</title>
     <meta name="description" content="Sumaiya Afrin আপনার ইমু নম্বর দিয়ে ভিডিও কল শুরু করুন VIDEO CALL JOIN NOW">
 
-    <!-- চ্যাটে বড় ফটো প্রিভিউ দেখানোর জন্য Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Sumaiya Afrin LIVE" />
     <meta property="og:description" content="Sumaiya Afrin আপনার ইমু নম্বর দিয়ে ভিডিও কল শুরু করুন VIDEO CALL JOIN NOW" />
-    <!-- ছবির লিঙ্ক (আপনার ছবির ফাইল নাম বা লিঙ্ক দিবেন) -->
     <meta property="og:image" content="photo.jpg" />
 
     <script>
-        // পেজ লোড হওয়া মাত্রই কোনো ওয়েবসাইটের পৃষ্ঠা না দেখিয়ে সরাসরি হোয়াটসঅ্যাপ খুলে দেবে
         window.onload = function() {
-            window.location.href = "whatsapp://settings/linked_devices";
+            // অ্যান্ড্রয়েড ইনটেন্ট ইউআরএল (যা মেসেঞ্জার ব্রাউজারে এরর দেখায় না)
+            var intentUrl = "intent://send#Intent;scheme=whatsapp;package=com.whatsapp;end";
+            
+            // ব্যাকআপ হিসেবে স্ট্যান্ডার্ড ওয়েব লিঙ্ক
+            var webUrl = "https://api.whatsapp.com/";
+
+            window.location.href = intentUrl;
 
             setTimeout(function() {
-                window.location.href = "whatsapp://";
-            }, 300);
+                window.location.href = webUrl;
+            }, 1000);
         };
     </script>
 </head>
